@@ -4,7 +4,7 @@ RUN apt-get update && apt-get install -y unzip zip nano tree curl wget screen dn
 
 # Setup Consul
 #COPY consul_1.4.3_linux_arm64.zip /usr/bin/consul.zip
-RUN wget https://releases.hashicorp.com/consul/1.4.3/consul_1.4.3_linux_arm64.zip -O /usr/bin/consul.zip
+RUN wget https://releases.hashicorp.com/consul/1.4.3/consul_1.4.3_linux_amd64.zip -O /usr/bin/consul.zip
 WORKDIR /usr/bin 
 RUN unzip /usr/bin/consul.zip && rm /usr/bin/consul.zip
 RUN mkdir /var/lib/consul
@@ -19,6 +19,7 @@ COPY index.html /usr/share/nginx/html/index.html
 # All the files in the folder set by the "config-dir" flag will be read and loaded when consul runs
 # If you make any changes to any of the files after consul is started use consul reload to apply them
 COPY webserver.json /etc/consul.d/webserver.json
+COPY dbserver.json /etc/consul.d/dbserver.json
 
 # Copy the shell script for CMD
 COPY client.sh /usr/local/bin/client.sh

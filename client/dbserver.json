@@ -1,0 +1,7 @@
+{
+  "service": {
+    "name": "dbserver",
+    "tags": ["dbserver"],
+    "port": 3306
+  }
+}
